@@ -15,7 +15,7 @@ func ListenSignalContext(
 	sig ...os.Signal,
 ) error {
 	sig = append(sig, syscall.SIGTERM, syscall.SIGINT)
-	signalCtx, stop := signal.NotifyContext(ctx)
+	signalCtx, stop := signal.NotifyContext(ctx, sig...)
 	defer stop()
 
 	select {

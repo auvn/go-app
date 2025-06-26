@@ -24,10 +24,11 @@ func (s *Server) Serve(
 		return fmt.Errorf("net.Listen: %w", err)
 	}
 
+	baseCtx := context.WithoutCancel(ctx)
 	baseSrv := http.Server{
 		Handler: h,
 		BaseContext: func(net.Listener) context.Context {
-			return context.WithoutCancel(ctx)
+			return baseCtx
 		},
 	}
 

@@ -9,7 +9,7 @@ import (
 	"github.com/auvn/go-app/graceful"
 )
 
-func NewApp[T any]() *bootstrap.App {
+func NewApp() *bootstrap.App {
 	app := bootstrap.App{}
 	app.Cleanup(defaultCleanup())
 	return &app
